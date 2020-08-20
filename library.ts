@@ -20,14 +20,17 @@ class eventLibrary implements IEventLibrary {
   }
 
   public summarize(eventName: string, secondsElapsed?: number) {
+    const currentTime = new Date();
+
     if (!secondsElapsed) {
       const count = this._countsSummary[eventName];
       if (count) { return count; }
       return 0;
     }
 
-
-    // temp
-    return 0;
+    return this._eventsTable.filter((record) => (
+      record.eventName === eventName &&
+      (currentTime.getTime() - record.eventTime.getTime()) <= secondsElapsed
+    )).length;
   }
 }
