@@ -1,30 +1,33 @@
-interface IEventLibrary {
-  signal: Function; // can do better than that, have signature here once you figure it out
-  summarize: Function;
-}
-
-interface ICountsTable {
-  [key: string]: number;
-}
-
-interface IEventsTable {
-  [key: string]: Date;
-}
-
 class eventLibrary implements IEventLibrary {
-  private _countsTable: ICountsTable;
-  private _eventsTable: IEventsTable;
+  private _countsSummary: ICountsTable;
+  private _eventsTable: IEvent[];
 
   constructor() {
-    this._countsTable = {};
-    this._eventsTable = {};
+    this._countsSummary = {};
+    this._eventsTable = [];
   }
 
-  public signal() {
+  public signal(eventName: string) {
+    const exists = eventName in this._countsSummary;
 
+    this._eventsTable.push({ eventName, eventTime: new Date() });
+
+    if (!exists) {
+      this._countsSummary[eventName] = 0;
+    }
+
+    this._countsSummary[eventName]++;
   }
 
-  public summarize() {
+  public summarize(eventName: string, secondsElapsed?: number) {
+    if (!secondsElapsed) {
+      const count = this._countsSummary[eventName];
+      if (count) { return count; }
+      return 0;
+    }
 
+
+    // temp
+    return 0;
   }
 }
