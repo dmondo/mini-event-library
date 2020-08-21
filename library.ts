@@ -1,36 +1,39 @@
-class eventLibrary implements IEventLibrary {
-  private _countsSummary: ICountsTable;
-  private _eventsTable: IEvent[];
+class EventLibrary implements IEventLibrary {
+  private countsSummary: ICountsTable;
+
+  private eventsTable: IEvent[];
 
   constructor() {
-    this._countsSummary = {};
-    this._eventsTable = [];
+    this.countsSummary = {};
+    this.eventsTable = [];
   }
 
   public signal(eventName: string) {
-    const exists = eventName in this._countsSummary;
+    const exists = eventName in this.countsSummary;
 
-    this._eventsTable.push({ eventName, eventTime: new Date() });
+    this.eventsTable.push({ eventName, eventTime: new Date() });
 
     if (!exists) {
-      this._countsSummary[eventName] = 0;
+      this.countsSummary[eventName] = 0;
     }
 
-    this._countsSummary[eventName]++;
+    this.countsSummary[eventName] += 1;
   }
 
   public summarize(eventName: string, secondsElapsed?: number) {
     const currentTime = new Date();
 
     if (!secondsElapsed) {
-      const count = this._countsSummary[eventName];
+      const count = this.countsSummary[eventName];
       if (count) { return count; }
       return 0;
     }
 
-    return this._eventsTable.filter((record) => (
-      record.eventName === eventName &&
-      (currentTime.getTime() - record.eventTime.getTime()) <= secondsElapsed
+    return this.eventsTable.filter((record: IEvent) => (
+      record.eventName === eventName
+      && (currentTime.getTime() - record.eventTime.getTime()) <= secondsElapsed
     )).length;
   }
 }
+
+export default EventLibrary;
