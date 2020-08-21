@@ -35,16 +35,17 @@ describe('events are associated with an eventTime', () => {
 
   test('user may request events over a specified amount of time', () => {
     const time1 = new Date();
-    time1.setSeconds(time1.getSeconds() - 12);
+    time1.setSeconds(time1.getSeconds() - 10);
     const time2 = new Date();
-    time2.setSeconds(time2.getSeconds() - 14);
+    time2.setSeconds(time2.getSeconds() - 20);
     const time3 = new Date();
 
     lib.signal('update', time1);
     lib.signal('update', time2);
     lib.signal('update', time3);
 
-    expect(lib.summarize('update', 10)).toBe(1);
+    expect(lib.summarize('update', 1000)).toBe(1);
+    expect(lib.summarize('update', 15000)).toBe(2);
     expect(lib.summarize('update')).toBe(3);
   });
 });
