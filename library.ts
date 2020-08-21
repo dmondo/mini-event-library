@@ -22,10 +22,10 @@ class EventLibrary implements IEventLibrary {
     this.countsSummary[eventName] += 1;
   }
 
-  public summarize(eventName: string, secondsElapsed?: number) {
+  public summarize(eventName: string, msElapsed?: number) {
     const currentTime = new Date();
 
-    if (!secondsElapsed) {
+    if (!msElapsed) {
       const count = this.countsSummary[eventName];
       if (count) { return count; }
       return 0;
@@ -33,7 +33,7 @@ class EventLibrary implements IEventLibrary {
 
     return this.eventsTable.filter((record: IEvent) => (
       record.eventName === eventName
-      && (currentTime.getTime() - record.eventTime.getTime()) <= secondsElapsed
+      && (currentTime.getTime() - record.eventTime.getTime()) <= msElapsed
     )).length;
   }
 

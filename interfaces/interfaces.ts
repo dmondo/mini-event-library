@@ -3,7 +3,7 @@ interface ISignal {
 }
 
 interface ISummarize {
-  (eventName: string, secondsElapsed?: number): number;
+  (eventName: string, msElapsed?: number): number;
 }
 
 interface IGetEvents {
