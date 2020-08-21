@@ -8,10 +8,12 @@ class EventLibrary implements IEventLibrary {
     this.eventsTable = [];
   }
 
-  public signal(eventName: string) {
+  public signal(eventName: string, evtTime?: Date) {
     const exists = eventName in this.countsSummary;
 
-    this.eventsTable.push({ eventName, eventTime: new Date() });
+    const eventTime = evtTime || new Date();
+
+    this.eventsTable.push({ eventName, eventTime });
 
     if (!exists) {
       this.countsSummary[eventName] = 0;
@@ -33,6 +35,10 @@ class EventLibrary implements IEventLibrary {
       record.eventName === eventName
       && (currentTime.getTime() - record.eventTime.getTime()) <= secondsElapsed
     )).length;
+  }
+
+  public getEvents() {
+    return this.eventsTable;
   }
 }
 

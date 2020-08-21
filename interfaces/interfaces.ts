@@ -1,14 +1,19 @@
 interface ISignal {
-  (eventName: string): void;
+  (eventName: string, evtTime?: Date): void;
 }
 
 interface ISummarize {
   (eventName: string, secondsElapsed?: number): number;
 }
 
+interface IGetEvents {
+  (): IEvent[];
+}
+
 interface IEventLibrary {
   signal: ISignal;
   summarize: ISummarize;
+  getEvents: IGetEvents;
 }
 
 interface ICountsTable {
