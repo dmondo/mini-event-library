@@ -13,6 +13,11 @@ class EventLibrary implements IEventLibrary {
 
     const eventTime = evtTime || new Date();
 
+    // JS array size ceiling is 2 ** 32 - 1
+    if (this.eventsTable.length > 2 ** 31) {
+      this.eventsTable.shift();
+    }
+
     this.eventsTable.push({ eventName, eventTime });
 
     if (!exists) {
