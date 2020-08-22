@@ -1,12 +1,8 @@
-import EventLibrary from '../dist/index';
+import { createEventLibrary } from '../index';
 
-const lib = new EventLibrary();
+const lib = createEventLibrary();
 
 describe('library should exist', () => {
-  test('library should instantiate without errors', () => {
-    expect(lib).toBeInstanceOf(EventLibrary);
-  });
-
   test('library should instantiate with no signals', () => {
     expect(lib.getEvents()).toEqual({});
   });

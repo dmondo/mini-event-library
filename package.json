@@ -6,7 +6,6 @@
     "event",
     "pub/sub"
   ],
-  "main": "dist/index.js",
   "scripts": {
     "test": "jest"
   },
