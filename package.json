@@ -1,6 +1,6 @@
 {
   "name": "mini-event-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a small library for counting events",
   "keywords": [
     "event",
