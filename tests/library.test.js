@@ -1,4 +1,4 @@
-import EventLibrary from '../dist/library';
+import EventLibrary from '../dist/index';
 
 const lib = new EventLibrary();
 
