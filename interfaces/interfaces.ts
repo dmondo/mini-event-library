@@ -2,7 +2,7 @@ interface ISignal {
   (eventName: string, evtTime?: Date): void;
 }
 
-interface ISummarize {
+interface IGetCount {
   (eventName: string, msElapsed?: number): number;
 }
 
@@ -12,7 +12,7 @@ interface IGetEvents {
 
 interface IEventLibrary {
   signal: ISignal;
-  summarize: ISummarize;
+  getCount: IGetCount;
   getEvents: IGetEvents;
 }
 

@@ -15,18 +15,18 @@ describe('library should exist', () => {
 describe('user may signal library about events', () => {
   test('user can signal library that an event has occured', () => {
     lib.signal('click');
-    expect(lib.summarize('click')).toBe(1);
+    expect(lib.getCount('click')).toBe(1);
   });
 
   test('user can signal that events of different names have occured', () => {
     lib.signal('click');
     lib.signal('req');
-    expect(lib.summarize('click')).toBe(2);
-    expect(lib.summarize('req')).toBe(1);
+    expect(lib.getCount('click')).toBe(2);
+    expect(lib.getCount('req')).toBe(1);
   });
 
   test('getting count for event that has not occured returns 0', () => {
-    expect(lib.summarize('post')).toBe(0);
+    expect(lib.getCount('post')).toBe(0);
   });
 });
 
@@ -48,8 +48,8 @@ describe('events are associated with an eventTime', () => {
     lib.signal('update', time2);
     lib.signal('update', time3);
 
-    expect(lib.summarize('update', 1000)).toBe(1);
-    expect(lib.summarize('update', 15000)).toBe(2);
-    expect(lib.summarize('update')).toBe(3);
+    expect(lib.getCount('update', 1000)).toBe(1);
+    expect(lib.getCount('update', 15000)).toBe(2);
+    expect(lib.getCount('update')).toBe(3);
   });
 });

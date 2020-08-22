@@ -16,7 +16,7 @@ class EventLibrary implements IEventLibrary {
     this.eventsTable[eventName].push(eventTime);
   }
 
-  public summarize(eventName: string, msElapsed?: number) {
+  public getCount(eventName: string, msElapsed?: number) {
     const currentTime = new Date();
 
     if (!msElapsed) {
