@@ -7,7 +7,7 @@ interface ISummarize {
 }
 
 interface IGetEvents {
-  (): IEvent[];
+  (): IEventsTable;
 }
 
 interface IEventLibrary {
@@ -16,11 +16,6 @@ interface IEventLibrary {
   getEvents: IGetEvents;
 }
 
-interface ICountsTable {
-  [key: string]: number;
-}
-
-interface IEvent {
-  eventName: string;
-  eventTime: Date;
+interface IEventsTable {
+  [key: string]: Date[];
 }

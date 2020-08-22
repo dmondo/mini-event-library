@@ -6,6 +6,10 @@ describe('library should exist', () => {
   test('library should instantiate without errors', () => {
     expect(lib).toBeInstanceOf(EventLibrary);
   });
+
+  test('library should instantiate with no signals', () => {
+    expect(lib.getEvents()).toEqual({});
+  });
 });
 
 describe('user may signal library about events', () => {
@@ -30,7 +34,7 @@ describe('events are associated with an eventTime', () => {
   test('user may override event time when signalling', () => {
     lib.signal('change', new Date(0));
     const allEvents = lib.getEvents();
-    expect(allEvents[allEvents.length - 1].eventTime.getTime()).toBe(0);
+    expect((allEvents.change)[0].getTime()).toBe(0);
   });
 
   test('user may request events over a specified amount of time', () => {
