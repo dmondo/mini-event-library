@@ -8,9 +8,9 @@ A small JS library for counting events.
 To use,
 
 ```js
-import { EventLibrary } from 'mini-event-library';
+import { createEventLibrary } from 'mini-event-library';
 
-const events = new EventLibrary();
+const events = createEventLibrary();
 
 events.signal('click');
 
