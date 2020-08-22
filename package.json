@@ -1,14 +1,18 @@
 {
-  "name": "instrumental",
+  "name": "mini-event-library",
   "version": "1.0.0",
-  "description": "",
+  "description": "a small library for counting events",
+  "keywords": [
+    "event",
+    "pub/sub"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Daniel Mondo",
+  "license": "MIT",
+  "repository": "mini-event-library",
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "@typescript-eslint/eslint-plugin": "^3.9.1",
