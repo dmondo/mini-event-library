@@ -35,4 +35,6 @@ class EventLibrary implements IEventLibrary {
   }
 }
 
-export default EventLibrary;
+const createEventLibrary = () => new EventLibrary();
+
+export { createEventLibrary, EventLibrary };
