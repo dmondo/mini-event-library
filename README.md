@@ -39,7 +39,7 @@ const earlyTime = new Date(0);
 events.signal('click', earlyTime); // this click is now associated with 1 Jan 1970
 ```
 
-Supports slicing events by given amount of time until current time (in milliseconds),
+Supports slicing events by amount of time before current time (in milliseconds),
 
 ```js
 events.getCount('click') // ->4
