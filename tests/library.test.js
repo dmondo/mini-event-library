@@ -27,6 +27,11 @@ describe('user may signal library about events', () => {
 });
 
 describe('events are associated with an eventTime', () => {
+  test('if no time is specified, current time is used for an event', () => {
+    lib.signal('ping');
+    expect(lib.getEvents()['ping'][0]).toBeInstanceOf(Date);
+  });
+
   test('user may override event time when signalling', () => {
     lib.signal('change', new Date(0));
     const allEvents = lib.getEvents();
