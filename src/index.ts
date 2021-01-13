@@ -18,14 +18,15 @@ class EventLibrary implements IEventLibrary {
 
   public getCount(eventName: string, msElapsed?: number) {
     const currentTime = new Date();
+    const eventArray = this.eventsTable[eventName];
+
+    if (!eventArray) { return 0; }
 
     if (!msElapsed) {
-      const eventArray = this.eventsTable[eventName];
-      if (eventArray) { return eventArray.length; }
-      return 0;
+      return eventArray.length;
     }
 
-    return this.eventsTable[eventName].filter((record: Date) => (
+    return eventArray.filter((record: Date) => (
       (currentTime.getTime() - record.getTime()) <= msElapsed
     )).length;
   }
